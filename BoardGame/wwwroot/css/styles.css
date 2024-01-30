@@ -1,3 +1,7 @@
 body {
   background-color: rgb(71, 163, 197);
+  margin: 30px;
+}
+a {
+  color: purple;
 }

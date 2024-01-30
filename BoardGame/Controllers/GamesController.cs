@@ -3,6 +3,7 @@ using BoardGame.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BoardGame.Controllers
 {
@@ -25,25 +26,33 @@ namespace BoardGame.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.GenreId = new SelectList(_db.Genres, "GenreId", "Name");
       return View();
     }
 
     [HttpPost]
     public ActionResult Create(Game game)
     {
+      if (game.GenreId == 0)
+      {
+        return RedirectToAction("Create");
+      }
       _db.Games.Add(game);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
     public ActionResult Details(int id)
     {
-      Game thisGame = _db.Games.FirstOrDefault(game => game.GameId == id);
+      Game thisGame = _db.Games
+                          .Include(game => game.Genre)
+                          .FirstOrDefault(game => game.GameId == id);
       return View(thisGame);
     }
 
     public ActionResult Edit(int id)
     {
       Game thisGame = _db.Games.FirstOrDefault(game => game.GameId == id);
+      ViewBag.GenreId = new SelectList(_db.Genres, "GenreId", "Name");
       return View(thisGame);
     }
 

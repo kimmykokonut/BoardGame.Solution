@@ -3,11 +3,21 @@
 }
 @model BoardGame.Models.Game
 
+
+
 <h4>Add a new game</h4>
+
+<p><strong>NOTE:</strong> You need to have at least one genre before you can add a game!</p>
+<p>Go to @Html.ActionLink("this page", "Create", "Genres") to create a genre.</p>
+
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
+
+  @Html.LabelFor(model => model.Genre)
+  @Html.DropDownList("GenreId")
+
   <input type="submit" value="Add new game" />
 }
 <button>@Html.ActionLink("Show all games", "Index")</button>
