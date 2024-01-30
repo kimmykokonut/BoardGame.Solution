@@ -2,12 +2,13 @@
   Layout = "_Layout";
 }
 @model BoardGame.Models.Genre
-
+<div class="form-style">
 <h4>Add a new genre</h4>
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
-  <input type="submit" value="Add new genre" />
+  <input type="submit" value="Add new genre" class="m-3"/>
 }
-<button>@Html.ActionLink("Show all genres", "Index")</button>
+
+</div>

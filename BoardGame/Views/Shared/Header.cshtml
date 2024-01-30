@@ -1,1 +1,9 @@
-<img src="~/images/logo.png" alt="board genie logo">
+<a href="/">
+<img id="logo" src="~/images/logo.png" alt="board genie logo">
+</a>
+
+
+<div id="navbar">
+  <button class="navButton">@Html.ActionLink("Games", "Index", "Games")</button>
+  <button class="navButton">@Html.ActionLink("Genres", "Index", "Genres")</button>
+</div>

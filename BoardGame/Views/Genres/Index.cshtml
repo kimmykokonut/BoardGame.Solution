@@ -3,20 +3,28 @@
 }
 
 @using BoardGame.Models;
+<div class="row m-3 ">
+  <div class="col-sm-8 mx-auto ">
+    <div class="card p-4 list">
+      <h1>Board Game Genres</h1>
+      <hr />
+      @if (@Model.Count == 0)
+      {
+        <h3>No genres have been added...</h3>
+      }
 
-<h1>Board Game Genres</h1>
-
-@if (@Model.Count == 0)
-{
-  <h3>No genres have been added...</h3>
-}
-
-@foreach (Genre genre in Model)
-{
-  <h4>@Html.ActionLink($"{@genre.Name}", "Details", new { id = genre.GenreId })</h4>
-  //this link will route to Genre list of games that belong (details page to come...)
-}
-
-<button>@Html.ActionLink("Add new genre", "Create")</button>
-<button>@Html.ActionLink("Go Home", "Index", "Home")</button>
-<button>search for game? (dead)</button>
+      @foreach (Genre genre in Model)
+      {
+        <h3>@Html.ActionLink($"{@genre.Name}", "Details", new { id = genre.GenreId })</h3>
+        //this link will route to Genre list of games that belong (details page to come...)
+      }
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="text-center">
+    <button>@Html.ActionLink("Add new genre", "Create")</button>
+    <button>@Html.ActionLink("Go Home", "Index", "Home")</button>
+    <button>search for game? (dead)</button>
+  </div>
+</div>
