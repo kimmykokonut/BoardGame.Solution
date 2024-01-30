@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using BoardGame.Models;
-//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoardGame
 {
@@ -12,6 +12,14 @@ namespace BoardGame
       WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
       builder.Services.AddControllersWithViews();
+
+      builder.Services.AddDbContext<BoardGameContext>(
+                        dbContextOptions => dbContextOptions
+                          .UseMySql(
+                            builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
+                          )
+                        )
+                      );
 
       WebApplication app = builder.Build();
 
