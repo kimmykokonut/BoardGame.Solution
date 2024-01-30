@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using BoardGame.Models;
+//using Microsoft.EntityFrameworkCore;
 
-namespace ProjectName //change name
+namespace BoardGame
 {
   class Program 
   {
