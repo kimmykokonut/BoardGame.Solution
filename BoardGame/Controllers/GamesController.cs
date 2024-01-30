@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using BoardGame.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoardGame.Controllers
 {
@@ -14,9 +15,11 @@ namespace BoardGame.Controllers
       _db = db;
     }
 
-    public ActionResult Index()  //shows game list at /games
+    public ActionResult Index()
     {
-      List<Game> model = _db.Games.ToList();
+      List<Game> model = _db.Games
+                            .Include(game => game.Genre)
+                            .ToList();
       return View(model);
     }
 

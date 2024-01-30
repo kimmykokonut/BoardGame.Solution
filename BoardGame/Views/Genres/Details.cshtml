@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BoardGame.Models.Genre
+@using BoardGame.Models 
+
+<h2>Genre Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+
+    @if (@Model.Games.Count == 0)
+    {
+      <h3>No games have been added to this genre yet!</h3>
+    }
+    else
+    {
+      <h3>Games:</h3>
+      <ul>
+        @foreach (Game game in Model.Games)
+        {
+          <li>@Html.ActionLink($"{game.Name}", "Details", "Games", new { id = game.GameId })</li>
+        }
+      </ul>
+    }
+
+    <p>@Html.ActionLink("Edit Genre", "Edit", new { id = Model.GenreId })</p>
+    <p>@Html.ActionLink("Delete Genre", "Delete", new { id = Model.GenreId })</p>
+    <p>@Html.ActionLink("Back to list", "Index")</p>

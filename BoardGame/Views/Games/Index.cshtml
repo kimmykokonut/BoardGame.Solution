@@ -3,6 +3,7 @@
 }
 
 @using BoardGame.Models;
+@model List<BoardGame.Models.Game>;
 
 <h1>List of Board Games</h1>
 
@@ -13,10 +14,9 @@
 
 @foreach (Game game in Model)
 {
-  <h4>@Html.ActionLink($"{@game.Name}", "Details", new { id = game.GameId })</h4>
+  <h4>@Html.ActionLink($"{@game.Name}", "Details", new { id = game.GameId }) | @game.Genre.Name</h4>
 }
 
 <button>@Html.ActionLink("Add new game", "Create")</button>
 <button>@Html.ActionLink("Go Home", "Index", "Home")</button>
 <button>search for game? (dead)</button>
-<p>genres?</p>

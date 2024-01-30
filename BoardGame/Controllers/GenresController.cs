@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using BoardGame.Models; 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoardGame.Controllers
 {
@@ -53,6 +54,14 @@ namespace BoardGame.Controllers
       _db.Genres.Remove(thisGenre);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      Genre thisGenre = _db.Genres
+                                  .Include(genre => genre.Games)
+                                  .FirstOrDefault(genre => genre.GenreId == id);
+      return View(thisGenre);
     }
   }
 }
