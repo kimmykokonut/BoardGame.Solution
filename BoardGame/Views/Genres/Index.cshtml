@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using BoardGame.Models;
+
+<h1>Board Game Genres</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No genres have been added...</h3>
+}
+
+@foreach (Genre genre in Model)
+{
+  <h4>@Html.ActionLink($"{@genre.Name}", "Details", new { id = genre.GenreId })</h4>
+  //this link will route to Genre list of games that belong (details page to come...)
+}
+
+<button>@Html.ActionLink("Add new genre", "Create")</button>
+<button>@Html.ActionLink("Go Home", "Index", "Home")</button>
+<button>search for game? (dead)</button>
