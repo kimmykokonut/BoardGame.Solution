@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+@model BoardGame.Models.Game
+
+<h4>Add a new game</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  <input type="submit" value="Add new game" />
+}
+<button>@Html.ActionLink("Show all games", "Index")</button>

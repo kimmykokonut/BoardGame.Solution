@@ -1,7 +1,9 @@
 @{
   Layout = "_Layout";
 }
+
 @using BoardGame.Models;
+
 <h1>List of Board Games</h1>
 
 @if (@Model.Count == 0)
@@ -11,9 +13,10 @@
 
 @foreach (Game game in Model)
 {
-  <li>@game.Name</li>
+  <h4>@Html.ActionLink($"{@game.Name}", "Details", new { id = game.GameId })</h4>
 }
-<p>link to add a game</p>
-<p>link to go home</p>
-<p>search for game?</p>
-<p>genres</p>
+
+<button>@Html.ActionLink("Add new game", "Create")</button>
+<button>@Html.ActionLink("Go Home", "Index", "Home")</button>
+<button>search for game? (dead)</button>
+<p>genres?</p>

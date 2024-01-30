@@ -1,0 +1,10 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BoardGame.Models.Game
+
+<h2>Game Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</h3>
+<button>@Html.ActionLink("Back to list", "Index")</button>
