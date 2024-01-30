@@ -37,5 +37,19 @@ namespace BoardGame.Controllers
       Game thisGame = _db.Games.FirstOrDefault(game => game.GameId == id);
       return View(thisGame);
     }
+
+    public ActionResult Edit(int id)
+    {
+      Game thisGame = _db.Games.FirstOrDefault(game => game.GameId == id);
+      return View(thisGame);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Game game)
+    {
+      _db.Games.Update(game);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

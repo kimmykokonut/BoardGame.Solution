@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+@model BoardGame.Models.Game
+
+<h2>Edit</h2>
+
+<h4>Edit this game's details: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.GameId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  <input type="submit" value="Save" />
+}
+<button>@Html.ActionLink("Back to list", "Index")</button>
