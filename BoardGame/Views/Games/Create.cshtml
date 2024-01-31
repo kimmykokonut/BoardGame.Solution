@@ -3,22 +3,29 @@
 }
 @model BoardGame.Models.Game
 
+<div class="row m-3">
+  <div class="col-sm-8 mx-auto ">
+    <div class="card p-4 list text-center">
+      <h3 class="card-title">Add a new game</h3>
 
-<div class="form-style">
-<h4>Add a new game</h4>
+      <p><strong>NOTE:</strong> You need to have at least one genre before you can add a game!</p>
 
-<p><strong>NOTE:</strong> You need to have at least one genre before you can add a game!</p>
-<p>Go to @Html.ActionLink("this page", "Create", "Genres") to create a genre.</p>
+      <p>Go to @Html.ActionLink("this page", "Create", "Genres") to create a genre.</p>
 
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
-
-  @Html.LabelFor(model => model.Genre)
-  @Html.DropDownList("GenreId")
-
-    <input type="submit" value="Add new game" class="m-3" />
-}
-<button>@Html.ActionLink("Show all games", "Index")</button>
+      @using (Html.BeginForm())
+      {
+        //@Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { placeholder = "name..." })
+        <br />
+        <br />
+        @Html.LabelFor(model => model.Genre)
+        @Html.DropDownList("GenreId")
+<br />
+        <input type="submit" value="Add new game" class="m-3" />
+      }
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <button>@Html.ActionLink("Show all games", "Index")</button>
 </div>
