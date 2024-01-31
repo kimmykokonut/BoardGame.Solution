@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Threading.Tasks;
 
 namespace BoardGame.Controllers
 {
@@ -16,13 +18,27 @@ namespace BoardGame.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    // public ActionResult Index()
+    // {
+    //   List<Game> model = _db.Games
+    //                         .Include(game => game.Genre)
+    //                         .ToList();
+    //   return View(model);
+    // }
+
+    public async Task<IActionResult> Index(string searchString)
     {
-      List<Game> model = _db.Games
-                            .Include(game => game.Genre)
-                            .ToList();
-      return View(model);
+      IQueryable<Game> model = from m in _db.Games
+                              .Include(game => game.Genre)
+                               select m;
+
+      if (!String.IsNullOrEmpty(searchString))
+      {
+        model = model.Where(s => s.Name!.Contains(searchString));
+      }
+      return View(await model.ToListAsync());
     }
+
 
     public ActionResult Create()
     {
