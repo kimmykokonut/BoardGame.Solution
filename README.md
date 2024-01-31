@@ -1,37 +1,27 @@
-## Template for ASP.NET Core MVC web application
+# Board Game Inventory
+_by Kim Robinson & Noah Kise_
 
-* set up project files, folders, and configure a host
+## An application to practice using EFCore and full CRUD functionality for c# .NET Mvc
 
-### Setup
-* Make sure parent directory is ProjectName.Solution
-* Change file names as necessary
-* commit .gitignore first
-
-----------------
-Readme from C# Console App- toupdate
-# ProjectName
-_by Kim Robinson_
-
-## Description
+![sql database relationship diagram](./BoardGame/wwwroot/images/sql.png)
 
 ###  This app will allow a user to:
-    - 
+    - Cread, read, update and delete game and genre of board games
+    - Search for game by name
 
 ### Technologies Used
 
 * C#
-* MSTest
-* TDD (Test Driven Development)
-* RGR Workflow (Red Green Refactor)
 * .Net
 * Git
 * NuGet package with dotnet CLI
+* EFCore
 
 ## Setup/Installation Requirements
 
 _Currently not viewable on gh-pages. Please follow steps below to set up locally_
 
-1. Navigate to [my github repository](https://github.com/kimmykokonut/XXX) for this project 
+1. Navigate to [my github repository](https://github.com/kimmykokonut/BoardGame.Solution) for this project 
 
 2. Click the `Fork` button and  you will be taken to a new page where you can give your repository a new name and description. Choose "create fork".
 
